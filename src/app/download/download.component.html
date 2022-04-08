@@ -1,0 +1,65 @@
+<button class="filter" mat-flat-button [matMenuTriggerFor]="menu">
+  <mat-icon>filter_list</mat-icon><label>Filter</label>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="languages">Languages</button>
+    <button mat-menu-item [matMenuTriggerFor]="ratings">Ratings</button>
+    <button mat-menu-item (click)="clearFilter()">Show all</button>
+
+    <mat-menu #languages="matMenu">
+      <button class="mat-menu-item" (click)="filterData('English')">English</button>
+      <button class="mat-menu-item" (click)="filterData('Tamil')">Tamil</button>
+      <button class="mat-menu-item" (click)="filterData('Telugu')">Telugu</button>
+      <button class="mat-menu-item" (click)="filterData('Malayalam')">Malayalam</button>
+      <button class="mat-menu-item" (click)="filterData('Kannada')">Kannada</button>
+      <button class="mat-menu-item" (click)="filterData('Hindi')">Hindi</button>
+    </mat-menu>
+    <mat-menu #ratings="matMenu">
+      <button class="mat-menu-item" (click)="filterData('5/5')">5</button>
+      <button class="mat-menu-item" (click)="filterData('4.5/5')">4.5</button>
+      <button class="mat-menu-item" (click)="filterData('4/5')">4</button>
+      <button class="mat-menu-item" (click)="filterData('3.5/5')">3.5</button>
+      <button class="mat-menu-item" (click)="filterData('3/5')">3</button>
+      
+    </mat-menu>
+  </mat-menu>
+</button>
+
+
+<div class="movie-cards">
+  <div  *ngFor="let movie of moviesListDownload">
+    <mat-card #card class="movie-card">
+      <img mat-card-image src="{{movie.img}}" height="70%"/>
+      <mat-card-footer style="text-align: center">
+        <b>{{ movie.name }}</b>
+        <br />
+        <span>{{ movie.language }}</span>
+        <br />
+        <span>
+          {{ movie.rating }}
+        </span>
+        <mat-card-actions>
+        <span *ngIf="!movie.available" style="color: red;">Added to the cart</span>
+        <br>
+          <button
+           *ngIf="movie.available"
+            mat-flat-button
+            disabled="false"
+            (click)="addToCart(movie)"
+          >
+            Add to cart
+          </button>
+          <button
+           *ngIf="!movie.available"
+           disabled="true"
+            matBadgeColor="warn"
+            mat-flat-button
+            (click)="addToCart(movie)"
+          >
+            Add to cart
+          </button>
+        </mat-card-actions>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

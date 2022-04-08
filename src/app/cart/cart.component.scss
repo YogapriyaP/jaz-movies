@@ -1,0 +1,36 @@
+$default-color: rgb(180, 179, 179);
+
+h1 {
+  color: $default-color;
+  font-weight: 500;
+  text-align: center;
+}
+
+.cart-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 1%;
+  background-color: $default-color;
+}
+
+.cart-container {
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.button-grp {
+  display: flex;
+  column-gap: 1%;
+  justify-content: center;
+}
+
+.proceed-to-buy {
+  width: max-content;
+  background-color: transparent;
+  color: rgb(180, 179, 179);
+}

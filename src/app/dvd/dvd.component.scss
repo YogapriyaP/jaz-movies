@@ -1,0 +1,75 @@
+$default-color:rgb(180, 179, 179);
+
+
+.icon{
+  margin-right: 5%;
+  background-color: $default_color;
+  column-width: 20%;
+}
+
+.search-movies{
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 10%;
+}
+
+.movie-cards{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  column-gap: 10%;
+  justify-content: center;
+  
+}
+.movie-card{
+ margin:7%;
+  width:230px;
+  height: 90%;
+  background-color:rgb(180, 179, 179);  
+}
+
+.movie-card :hover{
+  transform: scale(1.01);
+}
+
+.filter{
+  margin-left: 1%;
+  margin-top: 5%;
+  background-color: transparent;
+  color: $default-color;
+  position: sticky;
+}
+
+
+
+@mixin blinking($property){
+
+  @keyframes blinking {
+	0% {
+		color: red;
+	}
+	20% {
+		color: transparent;
+	}
+	40% {
+		color: red;
+	}
+	60% {
+		color: transparent;
+	}
+	100% {
+		color: red;
+	}
+}
+
+animation:$property;
+}
+  
+
+
+.stock{
+ 
+@include blinking (blinking 1.5s infinite) ;
+ 
+}

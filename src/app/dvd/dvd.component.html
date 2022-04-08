@@ -1,0 +1,78 @@
+<button class="filter" mat-flat-button color="transparent" [matMenuTriggerFor]="menu">
+  <mat-icon>filter_list</mat-icon><label>Filter</label>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="languages">Languages</button>
+    <button mat-menu-item [matMenuTriggerFor]="ratings">Ratings</button>
+    <button mat-menu-item (click)="clearFilter()">Show all</button>
+
+    <mat-menu #languages="matMenu">
+      <button class="mat-menu-item" (click)="filterData('English')">
+        English
+      </button>
+      <button class="mat-menu-item" (click)="filterData('Tamil')">Tamil</button>
+      <button class="mat-menu-item" (click)="filterData('Telugu')">
+        Telugu
+      </button>
+      <button class="mat-menu-item" (click)="filterData('Malayalam')">
+        Malayalam
+      </button>
+      <button class="mat-menu-item" (click)="filterData('Kannada')">
+        Kannada
+      </button>
+      <button class="mat-menu-item" (click)="filterData('Hindi')">Hindi</button>
+    </mat-menu>
+    <mat-menu #ratings="matMenu">
+      <button class="mat-menu-item" (click)="filterData('5/5')">5</button>
+      <button class="mat-menu-item" (click)="filterData('4.5/5')">4.5</button>
+      <button class="mat-menu-item" (click)="filterData('4/5')">4</button>
+      <button class="mat-menu-item" (click)="filterData('3.5/5')">3.5</button>
+      <button class="mat-menu-item" (click)="filterData('3/5')">3</button>
+    </mat-menu>
+  </mat-menu>
+</button>
+
+<div class="movie-cards">
+  <div *ngFor="let movie of moviesList">
+    <mat-card #card class="movie-card">
+      <img mat-card-image src="{{ movie.img }}" height="70%" />
+      <mat-card-footer style="text-align: center">
+        <b>{{ movie.name }}</b>
+        <br />
+        <span>{{ movie.language }}</span>
+        <br />
+        <span>
+          {{ movie.rating }}
+        </span>
+        <br />
+        <span style="color: green" *ngIf="movie.stocks>1"
+          >{{ movie.stocks }} stocks left</span>
+            <span class="stock" *ngIf="movie.stocks==1"
+          >Only {{ movie.stocks }} stock left</span>
+        <span style="color: red" *ngIf="!movie.stocks">Out of Stock</span>
+        <mat-card-actions>
+          <button
+            *ngIf="movie.stocks"
+            id="addtocart"
+            disabled="false"
+            matBadgeColor="warn"
+            mat-flat-button
+            disabled="false"
+            (click)="addtoCart(movie)">
+            Add to cart
+          </button>
+          <button
+            *ngIf="!movie.stocks"
+            id="addtocart"
+            disabled="false"
+            matBadgeColor="warn"
+            mat-flat-button
+            disabled="true"
+          >
+            Add to cart
+          </button>
+        </mat-card-actions>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

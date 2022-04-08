@@ -1,0 +1,44 @@
+<div class="cart-container">
+<h1>Cart Items</h1>
+  <div >
+
+    <mat-card class="cart-card" *ngFor="let cart of cartItems">
+    
+      <mat-card-header 
+        ><img
+          mat-card-avatar
+          src="{{ cart.img }}"
+          height="10px"
+        /><mat-card-title>
+          {{ cart.name }} 
+        </mat-card-title>
+        <mat-card-subtitle>Language : {{ cart.language }}</mat-card-subtitle
+        >
+        
+        </mat-card-header
+      >
+
+      <mat-card-actions>
+        <button mat-raised-button (click)="removeCartItem(cart,cart.mode)">
+          Remove from Cart
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="button-grp" *ngIf="cartItems.length">
+  
+    <button
+      class="proceed-to-buy"
+      mat-raised-button
+      *ngIf="cartItems"
+      (click)="proceedToBuy()"
+    >
+      Proceed to Buy
+    </button>
+    
+  </div>
+
+  <h1 *ngIf="!cartItems.length">Cart is empty right now!!</h1>
+  
+</div>
