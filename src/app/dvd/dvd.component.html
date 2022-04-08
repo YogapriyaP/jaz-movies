@@ -47,7 +47,7 @@
         <br />
         <span style="color: green" *ngIf="movie.stocks>1"
           >{{ movie.stocks }} stocks left</span>
-            <span class="stock" *ngIf="movie.stocks==1"
+            <span class="stock" *ngIf="movie.stocks===1"
           >Only {{ movie.stocks }} stock left</span>
         <span style="color: red" *ngIf="!movie.stocks">Out of Stock</span>
         <mat-card-actions>
