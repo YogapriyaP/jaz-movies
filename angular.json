@@ -32,7 +32,6 @@
             ],
             "styles": [
               "src/styles.scss"
-              
             ],
             "scripts": []
           },
@@ -101,13 +100,24 @@
             ],
             "styles": [
               "src/styles.scss"
-              
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "movie-app"
+  "defaultProject": "movie-app",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
