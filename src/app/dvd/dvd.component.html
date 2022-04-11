@@ -45,7 +45,7 @@
           {{ movie.rating }}
         </span>
         <br />
-        <span style="color: green" *ngIf="movie.stocks>1"
+        <span  *ngIf="movie.stocks>1"
           >{{ movie.stocks }} stocks left</span>
             <span class="stock" *ngIf="movie.stocks===1"
           >Only {{ movie.stocks }} stock left</span>
